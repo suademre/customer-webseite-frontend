@@ -1,0 +1,16 @@
+{
+  "email.label": "Email address",
+  "password.label": "Password",
+  "never.label": "We'll never share your email with anyone else.",
+  "check.label": "Check me out",
+  "submit.label": "Submit",
+  "de.label": "German",
+  "en.label": "English",
+  "de.question.placeholder": "Question Text in German",
+  "en.question.placeholder": "Question Text in English",
+
+  "eur.label": "Euro",
+  "usd.label": "Dolar",
+  "eur.cost.placeholder": "Price in Germany",
+  "usd.cist.placeholder": "Price in English"
+}

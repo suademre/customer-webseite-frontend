@@ -1,0 +1,203 @@
+{
+  "users": [
+    {
+      "id": "ajnsdlahdfadj",
+      "email": "admin@test.com",
+      "currency": null,
+      "language": "de",
+      "commission": null,
+      "company": null,
+      "contact": {
+        "name": "Admin Muster",
+        "email": "admin@test.com",
+        "tel": "08123 89123",
+        "mobile": "+49 213 128313",
+        "fax": "08123 89123"
+      },
+      "userType": "admin"
+    },
+    {
+      "id": "jhbkufwfabnjr",
+      "email": "mail@test.com",
+      "currency": "eur",
+      "language": "de",
+      "commission": 0.12,
+      "company": {
+        "name": "Muster Inc.",
+        "address": {
+          "street_and_no": "Musterstraße 1",
+          "zip_code": "12335",
+          "city": "Musterstadt",
+          "state": "BW",
+          "country": "Deutschland"
+        }
+      },
+      "contact": {
+        "name": "Max Muster",
+        "email": "mail@test.com",
+        "tel": "08123 89123",
+        "mobile": "+49 213 128313",
+        "fax": "08123 89123"
+      },
+      "userType": "user"
+    }
+  ],
+  "requests": [
+    {
+      "id": "iulaeguilaegblegr",
+      "user": "test@mail.com",
+      "currency": "eur",
+      "answers": [
+        {
+          "question": "adnslfiuadsfbnhlkf",
+          "answer": 1
+        },
+        {
+          "question": "jadbkfuahdfbdaasdjb",
+          "answer": 2
+        }
+      ],
+      "contract": "judsblhfhbsdkfl",
+      "status": {
+        "text": "status.contract",
+        "color": "info"
+      },
+      "comments": [
+        {
+          "user": "email",
+          "text": "",
+          "timestamp": ""
+        }
+      ]
+    },
+    {
+      "id": "sdjfbkljsdfsfdh",
+      "user": "test2@mail.com",
+      "currency": "eur",
+      "answers": [
+        {
+          "question": "jasbdfhkdsbf",
+          "answer": 1
+        },
+        {
+          "question": "adfjiulhdsfujadf",
+          "answer": 2
+        }
+      ],
+      "contract": null,
+      "status": {
+        "text": "status.awaiting_user_review",
+        "color": "warning"
+      },
+      "comments": [
+        {
+          "user": "admin@mail.com",
+          "text": "Das geht so nicht...",
+          "timestamp": 71382318213
+        }
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "id": "ilakbfwhuabfhwk",
+      "request": "iulaeguilaegblegr",
+      "user": "test@mail.com",
+      "language": "de",
+      "currency": "eur",
+      "form": [
+        {
+          "question": "adnslfiuadsfbnhlkf",
+          "answer": 1
+        },
+        {
+          "question": "jadbkfuahdfbdaasdjb",
+          "answer": 2
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "jbadkfudhbsfdjs",
+      "isRoot": true,
+      "text": {
+        "de": "Ein Frage?",
+        "tr": "Bir Soru?"
+      },
+      "answers": {
+        "1": {
+          "icon": "",
+          "text": {
+            "de": "Option 1",
+            "tr": "Seçenek 1"
+          },
+          "cost": {
+            "eur": 15,
+            "try": 50
+          },
+          "days": 0.5,
+          "next": "jdkbahdsbfhbdsfhjb",
+          "contract": {
+            "de": "Inklusive Option 1",
+            "tr": "Birinci Seçenek eklendi"
+          }
+        },
+        "2": {
+          "icon": "",
+          "text": {
+            "de": "Option 2",
+            "tr": "Seçenek 2"
+          },
+          "cost": {
+            "eur": 10,
+            "try": 45
+          },
+          "days": 2,
+          "next": "ibdkuhsdbfnlsdfhjb",
+          "contract": {
+            "de": "Inklusive Option 2",
+            "tr": "Ikinci Seçenek eklendi"
+          }
+        }
+      }
+    }
+  ],
+  "settings": [
+    {
+      "id": "company_data",
+      "company": {
+        "name": "VollStack",
+        "address": {
+          "street_and_no": "Anton-Huber-Straße 2",
+          "zip_code": "73430",
+          "city": "Aale",
+          "state": "BW",
+          "country": "Deutschland"
+        }
+      },
+      "contact": {
+        "name": "Harun Dalici",
+        "email": "hdalici@voll-stack.com",
+        "tel": "08123 89123",
+        "mobile": "+49 213 128313",
+        "fax": null
+      }
+    },
+    {
+      "id": "locales",
+      "languages": ["de", "en"],
+      "currencies": ["eur", "usd"]
+    }
+  ],
+  "invitations": [
+    {
+      "id": "kinsjadfjlnljfsn",
+      "token": "",
+      "email": "mail@test.com",
+      "currency": "eur",
+      "language": "de",
+      "commission": 0.2
+    }
+  ]
+}

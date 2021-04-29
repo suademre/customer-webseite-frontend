@@ -1,0 +1,16 @@
+{
+  "email.label": "E-Mail Adresse",
+  "password.label": "Kennwort",
+  "never.label": "Wir werden Ihre E-Mail-Adresse niemals an Dritte weitergeben",
+  "check.label": "Schau mich an",
+  "submit.label": "Einreichen",
+  "de.label": "Deutsch",
+  "en.label": "Englisch",
+  "de.question.placeholder": "Frage Text auf Deutsch",
+  "en.question.placeholder": "Frage Text auf Englisch",
+
+  "eur.label": "Euro",
+  "usd.label": "Dolar",
+  "eur.cost.placeholder": "Kost auf Deutsch",
+  "usd.cist.placeholder": "Kost auf Englisch"
+}

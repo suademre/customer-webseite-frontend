@@ -1,0 +1,26 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.left,
+.right {
+  width: 50%;
+}
+.right {
+  position: absolute;
+  right: 0;
+}
+
+.landing-desciption {
+  color: black;
+  border-color: black;
+}
+
+.landing-desciption:hover {
+  background-color: black !important;
+  color: white !important;
+}
