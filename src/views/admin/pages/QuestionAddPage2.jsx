@@ -161,13 +161,17 @@ function QuestionAddPage2() {
                     <Input
                       id="exampleFormControlTextarea1"
                       rows="3"
+                      type="number"
                       value={addQuestions.answers[index].days}
                       onChange={(e) => {
                         setAddQuestions({
                           ...addQuestions,
                           answers: addQuestions.answers.map((answer, i) => ({
                             ...answer,
-                            days: i === index ? e.target.value : answer.days,
+                            days:
+                              i === index
+                                ? parseInt(e.target.value)
+                                : answer.days,
                           })),
                         });
                       }}
