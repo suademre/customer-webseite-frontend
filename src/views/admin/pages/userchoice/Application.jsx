@@ -17,8 +17,13 @@ function Application() {
   useEffect(() => {
     axios("http://localhost:3100/admin/questions")
       .then((res) => {
-        let a = res.data.filter;
-        setApps(res.data.category[0].category_title === "Application");
+        let application = res.data.filter(
+          (obj) => obj.category[0].category_title === "Application"
+        );
+        /* setApps(res.data.category[0].category_title === "Application"); */
+        console.log(res);
+        console.log(application);
+        setApps(application);
       })
       .catch((err) => {
         console.log(err);
@@ -30,11 +35,11 @@ function Application() {
       {apps.map((app) => (
         <Card className="ml-5 mt-5" style={{ width: "20rem" }}>
           <CardBody>
-            <CardTitle tag="h4">{app.questions[0].question_text}</CardTitle>
-            <CardSubtitle className="mb-2 text-muted">
-              Card subtitle
-            </CardSubtitle>
             <CardText>Answers</CardText>
+            <CardTitle tag="h4">{app.questions[0].question_text}</CardTitle>
+            {/* <CardSubtitle className="mb-2 text-muted">
+              Card subtitle
+            </CardSubtitle> */}
 
             {app.questions[0].answers.map((q) => (
               <div className="form-check-radio">

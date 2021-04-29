@@ -96,7 +96,7 @@ function LandingPage() {
                       Choose from a veriety of many colors resembling sugar
                       paper pastels.
                     </p>
-                    <Link to={`${url}/webdevelopment`}>
+                    <Link to={`/webdevelopment`}>
                       <Button className="btn-link" color="danger">
                         Get Offer
                       </Button>
@@ -115,12 +115,8 @@ function LandingPage() {
                       Find unique and handmade delightful designs related items
                       directly from our sellers.
                     </p>
-                    <Link to={`${url}/dataanalyst`}>
-                      <Button
-                        className="btn-link"
-                        color="danger"
-                        onClick={(e) => e.preventDefault()}
-                      >
+                    <Link to={`/dataanalyst`}>
+                      <Button className="btn-link" color="danger">
                         Get Offer
                       </Button>
                     </Link>

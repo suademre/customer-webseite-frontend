@@ -123,6 +123,28 @@ function QuestionAddPage2() {
                   <CardTitle>Answer {index + 1}</CardTitle>
 
                   <FormGroup>
+                    <label htmlFor="exampleFormControlTextarea1">id</label>
+                    <Input
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      type="number"
+                      value={addQuestions.answers[index].value}
+                      onChange={(e) => {
+                        setAddQuestions({
+                          ...addQuestions,
+                          answers: addQuestions.answers.map((answer, i) => ({
+                            ...answer,
+                            value:
+                              i === index
+                                ? parseInt(e.target.value)
+                                : answer.value,
+                          })),
+                        });
+                      }}
+                    ></Input>
+                  </FormGroup>
+
+                  <FormGroup>
                     <label htmlFor="exampleFormControlTextarea1">text</label>
                     <Input
                       id="exampleFormControlTextarea1"
@@ -144,13 +166,17 @@ function QuestionAddPage2() {
                     <Input
                       id="exampleFormControlTextarea1"
                       rows="3"
+                      type="number"
                       value={addQuestions.answers[index].cost}
                       onChange={(e) => {
                         setAddQuestions({
                           ...addQuestions,
                           answers: addQuestions.answers.map((answer, i) => ({
                             ...answer,
-                            cost: i === index ? e.target.value : answer.cost,
+                            cost:
+                              i === index
+                                ? parseInt(e.target.value)
+                                : answer.cost,
                           })),
                         });
                       }}
