@@ -1,12 +1,11 @@
-import app from 'firebase/app';
-import 'firebase/analytics';
-import 'firebase/auth';
-import 'firebase/firestore';
- 
-import config from './../config/firebase';
-  
-class Firebase {
+import app from "firebase/app";
+import "firebase/analytics";
+import "firebase/auth";
+import "firebase/firestore";
 
+import config from "../config/firebase";
+
+class Firebase {
   static instance = null;
 
   constructor() {
@@ -19,9 +18,8 @@ class Firebase {
   }
 
   static getInstance() {
-      if(Firebase.instance == null)
-        this.instance = new Firebase();
-      return Firebase.instance;
+    if (Firebase.instance == null) this.instance = new Firebase();
+    return Firebase.instance;
   }
 }
 

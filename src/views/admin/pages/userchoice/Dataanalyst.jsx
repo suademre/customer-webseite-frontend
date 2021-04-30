@@ -59,8 +59,8 @@ function Dataanalyst() {
                         onChange={(e) => {
                           setSelectdList((prev) =>
                             prev.map((question, _index) =>
-                              question.map(
-                                (answer, _i) => index === _index && i === _i
+                              question.map((answer, _i) =>
+                                index === _index ? i === _i : answer
                               )
                             )
                           );
