@@ -104,7 +104,12 @@ function QuestionAddPage2() {
               ...addQuestions,
               answers: [
                 ...addQuestions.answers,
-                { value: null, text: null, days: null, cost: null },
+                {
+                  value: addQuestions.answers.length + 1,
+                  text: null,
+                  days: null,
+                  cost: null,
+                },
               ],
             });
           }}
@@ -123,21 +128,25 @@ function QuestionAddPage2() {
                   <CardTitle>Answer {index + 1}</CardTitle>
 
                   <FormGroup>
-                    <label htmlFor="exampleFormControlTextarea1">id</label>
+                    <label htmlFor="exampleFormControlTextarea1">
+                      {index + 1}
+                    </label>
                     <Input
                       id="exampleFormControlTextarea1"
                       rows="3"
                       type="number"
+                      disabled
+                      /* value={addQuestions.answers[index].value} */
                       value={addQuestions.answers[index].value}
                       onChange={(e) => {
                         setAddQuestions({
                           ...addQuestions,
                           answers: addQuestions.answers.map((answer, i) => ({
                             ...answer,
-                            value:
-                              i === index
-                                ? parseInt(e.target.value)
-                                : answer.value,
+                            value: index + 1,
+                            /* i === index
+                            ? parseInt(e.target.value)
+                            : answer.value, */
                           })),
                         });
                       }}

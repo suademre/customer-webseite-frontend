@@ -8,6 +8,7 @@ import {
   Label,
   Input,
   FormGroup,
+  Button,
 } from "reactstrap";
 
 function Dataanalyst() {
@@ -15,11 +16,16 @@ function Dataanalyst() {
   /*  const [days, setDays] = useState(0);
   const [costs, setCosts] = useState(0); */
   const [selectedList, setSelectdList] = useState([]);
+  const [days, setDays] = useState("");
+  const [cost, setCost] = useState("");
+  const [form, setForm] = useState({});
 
-  const aa = datas.map((data) => {});
+  console.log(form);
 
   useEffect(() => {
     const [cost, days] = getCostandDays();
+    setDays(days);
+    setCost(cost);
     console.log(cost, days);
   }, [selectedList]);
 
@@ -64,8 +70,6 @@ function Dataanalyst() {
                               )
                             )
                           );
-                          /* setCosts(costs + q.cost);
-                          console.log(costs); */
                         }}
                       ></Input>
                       {q.text} <span className="form-check-sign"></span>
@@ -95,6 +99,9 @@ function Dataanalyst() {
           </CardBody>
         </Card>
       ))}
+      <Button className="ml-5 mb-5" onClick={allData}>
+        Send
+      </Button>
     </>
   );
 
@@ -113,6 +120,16 @@ function Dataanalyst() {
     /* datas.map((data,index)=>
       data
     ) */
+  }
+  function allData() {
+    let senddata = {
+      id: 1,
+      fiyat: cost,
+      zaman: days,
+      savedData: selectedList,
+    };
+    //console.log(days + " " + cost);
+    console.log(senddata);
   }
 }
 
