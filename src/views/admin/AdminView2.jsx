@@ -18,6 +18,7 @@ import NavBar from "../../components/admin/NavBar";
 
 //reactstzrap
 import { Container, Row, Col, Card, Form, Button } from "reactstrap";
+import CategoryAddPage from "./pages/CategoryAddPage";
 
 function AdminView() {
   let { path, url } = useRouteMatch();
@@ -51,6 +52,9 @@ function AdminView() {
                 </Route>
                 <Route exact path={`${path}/settings`}>
                   <SettingsPage />
+                </Route>
+                <Route exact path={`${path}/categories`}>
+                  <CategoryAddPage />
                 </Route>
               </Switch>
             </Container>

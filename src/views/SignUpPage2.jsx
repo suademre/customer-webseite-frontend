@@ -6,6 +6,7 @@ import ContactForm from "../components/SignUp/ContactForm";
 import PasswordForm from "../components/SignUp/PasswordForm";
 import "../config/i18n";
 import User from "../models/user";
+import axios from "axios";
 
 function SignUpPage(props) {
   // Init i18n
@@ -13,6 +14,10 @@ function SignUpPage(props) {
 
   const [page, setPage] = useState(1);
   const [form, setForm] = useState({});
+  const formsend = () => {
+    axios.post("http://localhost:3100/register", form);
+    console.log(form);
+  };
 
   return (
     <Container fluid className="h-100">
@@ -53,12 +58,14 @@ function SignUpPage(props) {
                       address: form.address,
                     },
                   };
-                  User.signUpUser(
+                  formsend();
+
+                  /* User.signUpUser(
                     "ada63e98fe50eccb55036d88eda4b2c3709f53c2b65bc0335797067e9a2a5d8b",
                     data
                   ).then((res) => {
                     console.log(res);
-                  });
+                  }); */
                 } else {
                   setPage(page + 1);
                 }

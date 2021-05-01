@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import {
   Row,
@@ -16,16 +16,25 @@ import {
 } from "reactstrap";
 
 import TagsInput from "components/TagsInput/TagsInput.js";
+import axios from "axios";
 
 const initialAddQuestions = {
   category: null,
   question: "",
   answers: [],
   isMultiple: false,
+  category_id: null,
 };
 
 function QuestionAddPage2() {
   const [addQuestions, setAddQuestions] = useState(initialAddQuestions);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios("http://localhost:3100/admin/categories").then((res) => {
+      setCategories(res.data);
+    });
+  }, []);
 
   /* cosnt [ismultiple, setIsmultiple] = useState(false); */
 
@@ -47,18 +56,28 @@ function QuestionAddPage2() {
               name="singleSelect"
               value={addQuestions.category}
               onChange={(e) => {
-                setAddQuestions({ ...addQuestions, category: e });
+                setAddQuestions({
+                  ...addQuestions,
+                  category: e,
+                  category_id: e.value,
+                });
               }}
-              options={[
+              options={
+                categories.map((category) => ({
+                  value: category._id,
+                  label: category.title,
+                }))
+                /* [
                 {
                   value: "",
                   label: "Single Option",
                   isDisabled: true,
                 },
-                { value: "2", label: "Web Seite" },
-                { value: "3", label: "Application" },
-                { value: "4", label: "Data Analyst" },
-              ]}
+                { value: "1", label: "Web Seite" },
+                { value: "2", label: "Application" },
+                { value: "3", label: "Data Analyst" },
+              ] */
+              }
               placeholder="Single Select"
             />
           </Col>
@@ -125,12 +144,10 @@ function QuestionAddPage2() {
                 sm={4}
               >
                 <CardBody>
-                  <CardTitle>Answer {index + 1}</CardTitle>
+                  <CardTitle>Answer </CardTitle>
 
                   <FormGroup>
-                    <label htmlFor="exampleFormControlTextarea1">
-                      {index + 1}
-                    </label>
+                    <label htmlFor="exampleFormControlTextarea1">id</label>
                     <Input
                       id="exampleFormControlTextarea1"
                       rows="3"

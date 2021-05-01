@@ -33,6 +33,9 @@ function Sidebar() {
           <NavItem>
             <Link to={`${url}/settings`}>Settings</Link>
           </NavItem>
+          <NavItem>
+            <Link to={`${url}/categories`}>Categories</Link>
+          </NavItem>
         </Nav>
       </Container>
     </>

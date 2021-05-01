@@ -19,13 +19,15 @@ function Dataanalyst() {
   const [days, setDays] = useState("");
   const [cost, setCost] = useState("");
   const [form, setForm] = useState({});
+  const [answer, setAnswer] = useState([]);
 
   console.log(form);
 
   useEffect(() => {
-    const [cost, days] = getCostandDays();
+    const [cost, days, answer] = getCostandDays();
     setDays(days);
     setCost(cost);
+    setAnswer(answer);
     console.log(cost, days);
   }, [selectedList]);
 
@@ -108,15 +110,17 @@ function Dataanalyst() {
   function getCostandDays() {
     let cost = 0;
     let days = 0;
+    let answer = [];
     datas.map((data, index) => {
       data.questions[0].answers.map((d, i) => {
         if (selectedList[index][i]) {
           cost += d.cost;
           days += d.days;
+          answer = d.text;
         }
       });
     });
-    return [cost, days];
+    return [cost, days, answer];
     /* datas.map((data,index)=>
       data
     ) */
