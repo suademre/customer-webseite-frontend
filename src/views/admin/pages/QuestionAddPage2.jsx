@@ -256,7 +256,11 @@ function QuestionAddPage2() {
         <Button
           className="btn-move-right btn-round mt-5"
           color="danger"
-          onClick={() => {
+          onClick={async () => {
+            await axios.post(
+              "http://localhost:3100/admin/questions/add",
+              addQuestions
+            );
             setAddQuestions(initialAddQuestions);
           }}
         >

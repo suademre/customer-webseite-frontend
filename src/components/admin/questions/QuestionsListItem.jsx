@@ -24,9 +24,8 @@ function QuestionsListItem() {
     console.log(typeof questions);
     axios("http://localhost:3100/admin/questions")
       .then((res) => {
-        console.log(res.data);
         setQuestions(res.data);
-        console.log(typeof questions);
+        console.log(questions);
       })
       .catch((err) => {
         console.log(err);
@@ -37,16 +36,11 @@ function QuestionsListItem() {
     <>
       {questions.map((question, index) => (
         <Card className="bg-white text-white mt-5 mb-2 pl-3" sm="2">
-          <CardTitle tag="h4">
-            {" "}
-            Question: {question.questions[0].question_text}
-          </CardTitle>
-          <CardText>Category: {question.category[0].category_title}</CardText>
+          <CardTitle tag="h4"> Question: {question.question}</CardTitle>
+          <CardText>Category: {question.category_id.title}</CardText>
+          <CardText>Es gibt {question.answers.length} antworten</CardText>
           <CardText>
-            Es gibt {question.questions[0].answers.length} antworten
-          </CardText>
-          <CardText>
-            {question.questions[0].answers.map((q) => (
+            {question.answers.map((q) => (
               <CardText>
                 answer:{q.text}, days:{q.days} cost: {q.cost}
               </CardText>
@@ -58,7 +52,12 @@ function QuestionsListItem() {
               className="btn-round"
               color="danger"
               href="#pablo"
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.preventDefault();
+                axios.delete("http://localhost:3100/admin/questions", {
+                  id: question._id,
+                });
+              }}
             >
               Delete
             </Button>

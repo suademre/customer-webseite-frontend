@@ -11,10 +11,9 @@ function UsersPage() {
   console.log(users);
 
   useEffect(() => {
-    axios("http://localhost:3100/users")
+    axios("http://localhost:3100/admin/users")
       .then((res) => {
         setUsers(res.data);
-        console.log(res.data[0].contact.name);
       })
       .catch((err) => {
         console.log(err);
