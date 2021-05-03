@@ -28,35 +28,39 @@ function Dataanalyst() {
     setDays(days);
     setCost(cost);
     setAnswer(answer);
-    console.log(cost, days);
+    //console.log(cost, days);
   }, [selectedList]);
 
   useEffect(() => {
     axios("http://localhost:3100/admin/questions").then((res) => {
       let dataanalyst = res.data.filter(
-        (obj) => obj.category[0].category_title === "Dataanalyst"
+        (question) => question.category_id.title === "Data Analyst"
       );
 
       console.log(dataanalyst);
       console.log(res.data);
       setDatas(dataanalyst);
-      let sonuc = dataanalyst.map((data) =>
-        data.questions[0].answers.map((answer) => false)
-      );
+      let sonuc = dataanalyst.map((question) => ({
+        question: question.question,
+        answers: question.answers.map((answer) => ({
+          text: answer.text,
+          isSelected: false,
+        })), // obje dondurmek icin normal parantez de gerekioyr
+      }));
       setSelectdList(sonuc);
     });
   }, []);
 
   return (
     <>
-      {datas.map((data, index) => (
+      {datas.map((question, index) => (
         <Card className="ml-5 mt-5" style={{ width: "20rem" }}>
           <CardBody>
             <CardText>Answers</CardText>
-            <CardTitle tag="h4">{data.questions[0].question_text}</CardTitle>
+            <CardTitle tag="h4">{question.question}</CardTitle>
 
-            {data.questions[0].isMultiple === "false"
-              ? data.questions[0].answers.map((q, i) => (
+            {question.isMultiple === false
+              ? question.answers.map((q, i) => (
                   <div className="form-check-radio">
                     <Label check>
                       <Input
@@ -66,11 +70,16 @@ function Dataanalyst() {
                         type="radio"
                         onChange={(e) => {
                           setSelectdList((prev) =>
-                            prev.map((question, _index) =>
-                              question.map((answer, _i) =>
-                                index === _index ? i === _i : answer
-                              )
-                            )
+                            prev.map((question, _index) => ({
+                              ...question,
+                              answers: question.answers.map((answer, _i) => ({
+                                ...answer,
+                                isSelected:
+                                  index === _index
+                                    ? i === _i
+                                    : answer.isSelected,
+                              })),
+                            }))
                           );
                         }}
                       ></Input>
@@ -78,7 +87,7 @@ function Dataanalyst() {
                     </Label>
                   </div>
                 ))
-              : data.questions[0].answers.map((q, i) => (
+              : question.answers.map((q, i) => (
                   <FormGroup check>
                     <Label check>
                       <Input
@@ -86,12 +95,25 @@ function Dataanalyst() {
                         type="checkbox"
                         onChange={(e) => {
                           setSelectdList((prev) =>
+                            prev.map((question, _index) => ({
+                              ...question,
+                              answers: question.answers.map((answer, _i) => ({
+                                ...answer,
+                                isSelected:
+                                  index === _index && i === _i
+                                    ? !answer.isSelected
+                                    : answer.isSelected,
+                              })),
+                            }))
+                          );
+
+                          /* setSelectdList((prev) =>
                             prev.map((question, _index) =>
                               question.map((answer, _i) =>
                                 index === _index && i === _i ? !answer : answer
                               )
                             )
-                          );
+                          ); */
                         }}
                       ></Input>
                       {q.text} <span className="form-check-sign"></span>
@@ -111,9 +133,9 @@ function Dataanalyst() {
     let cost = 0;
     let days = 0;
     let answer = [];
-    datas.map((data, index) => {
-      data.questions[0].answers.map((d, i) => {
-        if (selectedList[index][i]) {
+    datas.map((question, index) => {
+      question.answers.map((d, i) => {
+        if (selectedList[index].answers[i].isSelected) {
           cost += d.cost;
           days += d.days;
           answer = d.text;
@@ -127,11 +149,13 @@ function Dataanalyst() {
   }
   function allData() {
     let senddata = {
-      id: 1,
-      fiyat: cost,
-      zaman: days,
-      savedData: selectedList,
+      user: "608d119bf2ac404396bc5769",
+      request: "Data Analyst",
+      cost,
+      days,
+      questions: selectedList,
     };
+    axios.post("http://localhost:3100/admin/requests", senddata);
     //console.log(days + " " + cost);
     console.log(senddata);
   }

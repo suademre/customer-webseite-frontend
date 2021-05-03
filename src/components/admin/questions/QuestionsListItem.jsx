@@ -19,18 +19,23 @@ import {
 
 function QuestionsListItem() {
   const [questions, setQuestions] = useState([]);
+  const [shouldUpdate, setShouldUpdate] = useState(true); //
 
   useEffect(() => {
-    console.log(typeof questions);
-    axios("http://localhost:3100/admin/questions")
-      .then((res) => {
-        setQuestions(res.data);
-        console.log(questions);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (shouldUpdate) {
+      console.log(typeof questions);
+      axios("http://localhost:3100/admin/questions")
+        .then((res) => {
+          setQuestions(res.data);
+
+          console.log(questions);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setShouldUpdate(false);
+    }
+  }, [shouldUpdate]);
 
   return (
     <>
@@ -53,10 +58,13 @@ function QuestionsListItem() {
               color="danger"
               href="#pablo"
               onClick={(e) => {
-                e.preventDefault();
-                axios.delete("http://localhost:3100/admin/questions", {
-                  id: question._id,
-                });
+                axios
+                  .delete(
+                    "http://localhost:3100/admin/questions/" + question._id
+                  )
+                  .then((res) => {
+                    setShouldUpdate(true);
+                  });
               }}
             >
               Delete

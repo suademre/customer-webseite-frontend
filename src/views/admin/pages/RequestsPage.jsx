@@ -6,15 +6,22 @@ import { Button, ButtonGroup, Table, UncontrolledTooltip } from "reactstrap";
 
 function RequestsPage() {
   const [requests, setRequests] = useState([]);
+  const [shouldUpdate, setShouldUpdate] = useState(true);
+
+  const updateStatus = (id, operation) => {
+    axios(`http://localhost:3100/admin/requests/update/${id}/${operation}`);
+    setShouldUpdate(true);
+  };
 
   useEffect(() => {
+    setShouldUpdate(false);
     axios("http://localhost:3100/admin/requests")
       .then((res) => {
         console.log(res.data);
         setRequests(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [shouldUpdate]);
 
   return (
     <>
@@ -35,11 +42,11 @@ function RequestsPage() {
           <tbody>
             <tr>
               <td className="text-center">1</td>
-              <td>{request.request[0].request_user}</td>
-              <td>{request.request[0].status}</td>
-              <td>{request.request[0].application}</td>
-              <td>{request.request[0].days}</td>
-              <td className="text-right">€ {request.request[0].cost}</td>
+              <td>{request.user}</td>
+              <td>{request.status}</td>
+              <td>{request.request}</td>
+              <td>{request.days}</td>
+              <td className="text-right">€ {request.cost}</td>
               <td className="td-actions text-right">
                 <Button
                   className="btn-icon"
@@ -48,7 +55,7 @@ function RequestsPage() {
                   size="sm"
                   type="button"
                   onClick={(e) => {
-                    console.log("onaylandi");
+                    updateStatus(request._id, "accepted");
                   }}
                 >
                   <i className="fa fa-check-circle"></i>
@@ -64,7 +71,7 @@ function RequestsPage() {
                   size="sm"
                   type="button"
                   onClick={() => {
-                    console.log("update");
+                    updateStatus(request._id, "waiting");
                   }}
                 >
                   <i className="fa fa-edit"></i>
@@ -80,7 +87,7 @@ function RequestsPage() {
                   size="sm"
                   type="button"
                   onClick={() => {
-                    console.log("silindi");
+                    updateStatus(request._id, "canceled");
                   }}
                 >
                   <i className="fa fa-times"></i>

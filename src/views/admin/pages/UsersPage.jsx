@@ -8,12 +8,13 @@ import { Button, ButtonGroup, Table, UncontrolledTooltip } from "reactstrap";
 function UsersPage() {
   const [users, setUsers] = useState([]);
 
-  console.log(users);
+  /* console.log(users); */
 
   useEffect(() => {
     axios("http://localhost:3100/admin/users")
       .then((res) => {
         setUsers(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -38,11 +39,11 @@ function UsersPage() {
           <tbody>
             <tr>
               <td className="text-center">1</td>
+              <td>{user.name}</td>
               <td>{user.contact.name}</td>
-              <td>{user.company.name}</td>
-              <td>{user.contact.name}</td>
-              <td>{user.contact.name}</td>
-              <td className="text-right">{user.contact.tel}</td>
+              <td>{user.contact.mail}</td>
+              <td>{user.contact.tel}</td>
+              <td className="text-right">{user.address.country}</td>
               <td className="td-actions text-right">
                 <Button
                   className="btn-icon"
