@@ -32,6 +32,9 @@ import {
   Modal,
 } from "reactstrap";
 import AdminView from "views/admin/AdminView";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login } from "redux/auth/authSlice";
 // core components
 
 function WhiteNavbar(props) {
@@ -45,6 +48,9 @@ function WhiteNavbar(props) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const { match, location, history } = props;
+
+  const dispatch = useDispatch();
+
   React.useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
     // initialise
@@ -170,7 +176,7 @@ function WhiteNavbar(props) {
             <span aria-hidden={true}>×</span>
           </button>
           <h6 className="text-muted">Welcome</h6>
-          <h3 className="modal-title text-center">Paper Kit</h3>
+          <h3 className="modal-title text-center">Paper Kitttt</h3>
           <p>Log in to your account</p>
         </div>
         <div className="modal-body">
@@ -196,19 +202,23 @@ function WhiteNavbar(props) {
               }}
             />
           </FormGroup>
-
           <Button
             block
             className="btn"
             color="primary"
             onClick={() => {
               console.log(email, password);
-              User.loginWithEmailAndPassword(email, password).then((res) => {
+              axios
+                .post("http://localhost:3100/login", { email, password })
+                .then((res) => {
+                  dispatch(login(res.data));
+                });
+              /*User.loginWithEmailAndPassword(email, password).then((res) => {
                 console.log(res);
                 if (res.user_type === "user") {
                   history.push("/admin/dashboard");
                 }
-              });
+              });*/
             }}
           >
             Log in

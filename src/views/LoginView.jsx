@@ -21,7 +21,7 @@ function LoginView(props) {
               <Form.Label>{t("email.label")}</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Enter emaila"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Form.Text className="text-muted">{t("never.label")}</Form.Text>

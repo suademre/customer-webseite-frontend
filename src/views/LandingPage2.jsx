@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // reactstrap components
 import {
@@ -20,11 +20,16 @@ import LandingPageHeader2 from "components/Headers/LandingPageHeader2.js";
 import FooterWhite from "components/Footers/FooterWhite.js";
 import WhiteNavbar2 from "components/Navbars/WhiteNavbar2";
 import { useRouteMatch, Link, withRouter } from "react-router-dom";
+import axios from "axios";
 
 function LandingPage() {
   let { path, url } = useRouteMatch();
 
   const [form, setForm] = useState({});
+
+  useEffect(() => {
+    axios("http://localhost:3100/test");
+  }, []);
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {

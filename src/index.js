@@ -39,29 +39,43 @@ import Dataanalyst from "views/admin/pages/userchoice/Dataanalyst";
 
 // others
 
+import store from "../src/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+import setupAxios from "../src/redux/setupAxios";
+import { Provider } from "react-redux";
+
+setupAxios(store);
+
+const persistor = persistStore(store);
+
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/">
-        <LandingPage2 />
-      </Route>
-      <Route exact path="/application">
-        <Application />
-      </Route>
-      <Route exact path="/webdevelopment">
-        <Webdevelopment />
-      </Route>
-      <Route exact path="/dataanalyst">
-        <Dataanalyst />
-      </Route>
-      <Route path="/admin">
-        <AdminView2 />
-      </Route>
-      <Route path="/signup">
-        <SignUpPage2 />
-      </Route>
-      <Redirect to="/" />
-    </Switch>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage2 />
+          </Route>
+          <Route exact path="/application">
+            <Application />
+          </Route>
+          <Route exact path="/webdevelopment">
+            <Webdevelopment />
+          </Route>
+          <Route exact path="/dataanalyst">
+            <Dataanalyst />
+          </Route>
+          <Route path="/admin">
+            <AdminView2 />
+          </Route>
+          <Route path="/signup">
+            <SignUpPage2 />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>,
   document.getElementById("root")
 );

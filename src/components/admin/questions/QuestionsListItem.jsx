@@ -29,6 +29,7 @@ function QuestionsListItem() {
           setQuestions(res.data);
 
           console.log(questions);
+          console.log(questions.category_id.title);
         })
         .catch((err) => {
           console.log(err);
@@ -38,7 +39,7 @@ function QuestionsListItem() {
   }, [shouldUpdate]);
 
   return (
-    <>
+    <div>
       {questions.map((question, index) => (
         <Card className="bg-white text-white mt-5 mb-2 pl-3" sm="2">
           <CardTitle tag="h4"> Question: {question.question}</CardTitle>
@@ -72,7 +73,7 @@ function QuestionsListItem() {
           </CardFooter>
         </Card>
       ))}
-    </>
+    </div>
   );
 }
 

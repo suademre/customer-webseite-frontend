@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
     "bootstrap": "4.6.0",
     "classnames": "2.2.6",
@@ -20,11 +21,13 @@
     "react-form": "^4.0.1",
     "react-i18next": "^11.8.13",
     "react-photoswipe-gallery": "1.3.4",
+    "react-redux": "^7.2.4",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
     "react-select": "4.3.0",
     "react-tabs": "^3.2.2",
-    "reactstrap": "8.9.0"
+    "reactstrap": "8.9.0",
+    "redux-persist": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
