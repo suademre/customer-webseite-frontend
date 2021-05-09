@@ -63,7 +63,7 @@ function QuestionAddPage(props) {
 
       <Tabs
         id="controlled-tab-example"
-        activeKey={active}
+        activekey={active}
         onSelect={(k) => {
           if (k === "new") {
             if (Object.keys(answers).length === 0) {
@@ -150,7 +150,7 @@ function QuestionAddPage(props) {
       <Nav
         tabs
         id="controlled-tab-example"
-        activeKey={active}
+        activekey={active}
         onSelect={(k) => {
           if (k === "new") {
             if (Object.keys(answers).length === 0) {

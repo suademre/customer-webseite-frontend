@@ -1,4 +1,4 @@
-import { Nav, Col, Container, NavItem, NavLink } from "reactstrap";
+import { Nav, Container, NavItem } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import { useRouteMatch, Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ import { useRouteMatch, Link } from "react-router-dom";
 import "../../styles/admin/sidebar.css";
 
 function Sidebar() {
-  let { path, url } = useRouteMatch();
+  let { url } = useRouteMatch();
   console.log(url);
 
   return (
@@ -14,7 +14,7 @@ function Sidebar() {
       <Container className="pl-2 pr-0 my-2">
         <Nav
           className="col-md-12 d-none d-md-block bg-light sidebar pl-4 "
-          activeKey="/home"
+          activekey="/home"
         >
           <div className="sidebar-sticky"></div>
 

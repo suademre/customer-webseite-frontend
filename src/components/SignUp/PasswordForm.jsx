@@ -3,7 +3,7 @@ import { Col, Label, Input, FormGroup } from "reactstrap";
 
 function PasswordForm(props) {
   let { data, setData } = props;
-  const [hata, setHata] = useState("");
+  /* const [hata, setHata] = useState(""); */
   return (
     <>
       <h4>Password</h4>

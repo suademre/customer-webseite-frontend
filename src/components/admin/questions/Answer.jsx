@@ -7,8 +7,6 @@ import MultiLanguageText from "./MultiLanguageText";
 
 //reactstrap
 import {
-  InputGroupAddon,
-  InputGroupText,
   Input,
   Col,
   Row,

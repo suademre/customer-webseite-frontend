@@ -39,7 +39,7 @@ function QuestionAddPage(props) {
         <Nav
           tabs
           id="controlled-tab-example"
-          activeKey={active}
+          activeey={active}
           onSelect={(k) => {
             if (k === "new") {
               if (Object.keys(answers).length === 0) {

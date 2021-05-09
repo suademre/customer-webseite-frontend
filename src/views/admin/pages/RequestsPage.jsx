@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 // reactstrap components
-import { Button, ButtonGroup, Table, UncontrolledTooltip } from "reactstrap";
+import { Button, Table, UncontrolledTooltip } from "reactstrap";
 
 function RequestsPage() {
   const [requests, setRequests] = useState([]);
@@ -42,7 +42,7 @@ function RequestsPage() {
           <tbody>
             <tr>
               <td className="text-center">1</td>
-              <td>{request.user}</td>
+              <td>{request.user ? request.user.contact.name : null}</td>
               <td>{request.status}</td>
               <td>{request.request}</td>
               <td>{request.days}</td>

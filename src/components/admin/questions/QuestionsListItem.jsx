@@ -5,16 +5,9 @@ import { InfoCircle, PencilFill, Trash } from "reactstrap-icons"; */
 import {
   Button,
   Card,
-  CardBody,
   CardFooter,
-  CardImg,
-  CardImgOverlay,
-  CardLink,
   CardTitle,
-  CardSubtitle,
   CardText,
-  ListGroupItem,
-  ListGroup,
 } from "reactstrap";
 
 function QuestionsListItem() {

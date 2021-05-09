@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 /* import { Table, Button, Modal } from "reactstrap"; */
 
 //reactstrap
-import { Button, ButtonGroup, Table, UncontrolledTooltip } from "reactstrap";
+import { Button, Table, UncontrolledTooltip } from "reactstrap";
 
 function UsersPage() {
   const [users, setUsers] = useState([]);

@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouteMatch } from "react-router";
 
 // reactstrap components
 import { Button, Container } from "reactstrap";
@@ -8,10 +7,9 @@ import "../../assets/css/header.css";
 // core components
 
 function LandingPageHeader() {
-  let { path, url } = useRouteMatch("");
+  
 
   let pageHeader = React.createRef();
-  const [loginModal, setLoginModal] = React.useState(false);
 
   React.useEffect(() => {
     if (window.innerWidth > 991) {

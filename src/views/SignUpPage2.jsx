@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { useTranslation } from "react-i18next";
 import CompanyForm from "../components/SignUp/CompanyForm";
 import ContactForm from "../components/SignUp/ContactForm";
 import PasswordForm from "../components/SignUp/PasswordForm";
 import "../config/i18n";
-import User from "../models/user";
 import axios from "axios";
 
 function SignUpPage(props) {

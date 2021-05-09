@@ -12,7 +12,7 @@ import Select from "react-select";
 import { Row, Col } from "reactstrap";
 
 function IconSelector(props) {
-  const { data, setData } = props;
+  /* const { data, setData } = props; */
   const [singleSelect, setSingleSelect] = useState;
   return (
     <>

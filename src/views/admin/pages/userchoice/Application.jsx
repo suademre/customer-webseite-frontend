@@ -4,9 +4,7 @@ import {
   Card,
   CardTitle,
   CardText,
-  CardFooter,
   CardBody,
-  CardSubtitle,
   Label,
   Input,
   FormGroup,
@@ -18,7 +16,6 @@ function Application() {
   const [selectedList, setSelectdList] = useState([]);
   const [days, setDays] = useState("");
   const [cost, setCost] = useState("");
-  const [form, setForm] = useState({});
   const [answer, setAnswer] = useState([]);
 
   useEffect(() => {

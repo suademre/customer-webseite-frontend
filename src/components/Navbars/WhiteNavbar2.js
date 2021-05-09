@@ -1,55 +1,43 @@
 import React, { useState } from "react";
 import {
   Link,
-  useRouteMatch,
-  BrowserRouter,
-  Route,
-  Redirect,
-  Switch,
   withRouter,
 } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
-import User from "../../models/user";
 // reactstrap components
 import {
   Button,
   Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
   Nav,
   Container,
   UncontrolledTooltip,
-  UncontrolledCollapse,
   NavLink,
   FormGroup,
   Input,
   Modal,
 } from "reactstrap";
-import AdminView from "views/admin/AdminView";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "redux/auth/authSlice";
+import { logout } from "redux/auth/authSlice";
 // core components
 
 function WhiteNavbar(props) {
-  //path
-  let { path, url } = useRouteMatch("");
 
   const [loginModal, setLoginModal] = React.useState(false);
   const [bodyClick, setBodyClick] = React.useState(false);
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const { match, location, history } = props;
+  const { history } = props;
 
   const dispatch = useDispatch();
+
+  const userName = useSelector((state) => state.auth.name);
 
   React.useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
@@ -133,28 +121,59 @@ function WhiteNavbar(props) {
                   Pricing
                 </NavLink>
               </NavItem>
-
               <NavItem className=" ml-lg-auto">
-                <Button
-                  className="btn ml-auto"
-                  color="info"
-                  target="_blank"
-                  onClick={() => {
-                    history.push("/signup");
-                  }}
-                >
-                  <i className="" /> Register
-                </Button>
+                {userName ? (
+                  <>
+                    {userName}
+                    <Link to={"/myrequests"}>
+                      <Button>My Request</Button>
+                    </Link>
+                    <Button
+                      className="btn ml-auto"
+                      color="info"
+                      target="_blank"
+                      onClick={() => {
+                        dispatch(logout());
+                      }}
+                    >
+                      <i className="" /> Logout
+                    </Button>
 
-                <Button
-                  className="btn ml-auto"
-                  onClick={() => setLoginModal(true)}
-                  color="primary"
-                  /* href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkpr-white-navbar" */
-                  target="_blank"
-                >
-                  <i className="" /> Login
-                </Button>
+                    {/* <Button
+                      className="btn ml-auto"
+                      color="info"
+                      target="_blank"
+                      onClick={() => {
+                        history.push("/myrequests");
+                      }}
+                    >
+                      <i className="" /> My Request
+                    </Button> */}
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      className="btn ml-auto"
+                      color="info"
+                      target="_blank"
+                      onClick={() => {
+                        history.push("/signup");
+                      }}
+                    >
+                      <i className="" /> Register
+                    </Button>
+
+                    <Button
+                      className="btn ml-auto"
+                      onClick={() => setLoginModal(true)}
+                      color="primary"
+                      /* href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkpr-white-navbar" */
+                      target="_blank"
+                    >
+                      <i className="" /> Login
+                    </Button>
+                  </>
+                )}
               </NavItem>
             </Nav>
           </Collapse>
@@ -212,6 +231,13 @@ function WhiteNavbar(props) {
                 .post("http://localhost:3100/login", { email, password })
                 .then((res) => {
                   dispatch(login(res.data));
+                  if (res.status === 200) {
+                    /* if (res.user_type === "user") {
+                      history.push("/admin/dashboard");
+                    } */
+                    setLoginModal(false);
+                    console.log(res.data);
+                  }
                 });
               /*User.loginWithEmailAndPassword(email, password).then((res) => {
                 console.log(res);

@@ -7,10 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
   Col,
   Input,
@@ -73,7 +69,7 @@ function MultiLangugaeText(props) {
 
       {/* <Tabs
         id="controlled-tab-example"
-        activeKey={active}
+        activekey={active}
         onSelect={(k) => setActive(k)}
       >
         {langs.map((lang) => (

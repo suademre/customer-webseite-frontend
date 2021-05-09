@@ -5,7 +5,6 @@ import {
   Col,
   Container,
   Label,
-  Form,
   FormGroup,
   Input,
   Button,
@@ -15,7 +14,6 @@ import {
   CardFooter,
 } from "reactstrap";
 
-import TagsInput from "components/TagsInput/TagsInput.js";
 import axios from "axios";
 
 const initialAddQuestions = {

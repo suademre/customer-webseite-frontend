@@ -20,22 +20,16 @@ import QuestionsListItem from "../../../components/admin/questions/QuestionsList
 import { Link, useRouteMatch } from "react-router-dom";
 
 import {
-  DropdownButton,
-  Dropdown,
-  InputGroup,
-  FormControl,
   FormGroup,
-  Form,
   Button,
   Input,
   Col,
   Row,
-  Card,
   Label,
 } from "reactstrap";
 
 const QuestionsPage = () => {
-  let { path, url } = useRouteMatch();
+  let { url } = useRouteMatch();
   return (
     <>
       <FormGroup className="mt-5 mb-5">

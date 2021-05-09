@@ -29,13 +29,6 @@ import "assets/demo/react-demo.css";
 import LandingPage2 from "views/LandingPage2";
 import SignUpPage2 from "views/SignUpPage2";
 import AdminView2 from "views/admin/AdminView2";
-import UsersPage from "views/admin/pages/UsersPage";
-import QuestionsPage from "views/admin/Questions/QuestionsPage";
-import RequestsPage from "views/admin/pages/RequestsPage";
-import SettingsPage from "views/admin/pages/SettingsPage";
-import Application from "views/admin/pages/userchoice/Application";
-import Webdevelopment from "views/admin/pages/userchoice/Webdevelopment";
-import Dataanalyst from "views/admin/pages/userchoice/Dataanalyst";
 
 // others
 
@@ -44,6 +37,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import setupAxios from "../src/redux/setupAxios";
 import { Provider } from "react-redux";
+import MyRequests from "views/user/MyRequests";
+import Application from "views/admin/pages/userchoice/Application";
+import Webdevelopment from "views/admin/pages/userchoice/Webdevelopment";
+import Dataanalyst from "views/admin/pages/userchoice/Dataanalyst";
 
 setupAxios(store);
 
@@ -65,6 +62,9 @@ ReactDOM.render(
           </Route>
           <Route exact path="/dataanalyst">
             <Dataanalyst />
+          </Route>
+          <Route exact path="/myrequests">
+            <MyRequests />
           </Route>
           <Route path="/admin">
             <AdminView2 />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Input, FormGroup, Label } from "reactstrap";
+import { Input, FormGroup, Label } from "reactstrap";
 
 function CompanyForm(props) {
   let { data, setData } = props;

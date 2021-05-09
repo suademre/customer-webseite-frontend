@@ -2,6 +2,7 @@ import { refresh } from "./auth/authSlice";
 import axios from "axios";
 
 export default function setupAxios(store) {
+  //axios.defaults.baseURL = "http://localhost:3100/"
   axios.interceptors.request.use(
     (config) => {
       const {

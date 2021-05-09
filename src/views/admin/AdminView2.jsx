@@ -1,12 +1,8 @@
 /* import { Container, Row, Col, Card, Form, Button } from "reactstrap"; */
-import { withRouter } from "react-router";
 import Sidebar from "../../components/admin/Sidebar";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useParams,
   useRouteMatch,
 } from "react-router-dom";
 import UsersPage from "./pages/UsersPage";
@@ -14,14 +10,14 @@ import QuestionsPage from "./pages/QuestionsPage";
 import RequestsPage from "./pages/RequestsPage";
 import SettingsPage from "./pages/SettingsPage";
 import QuestionAddPage2 from "./pages/QuestionAddPage2";
-import NavBar from "../../components/admin/NavBar";
+/* import NavBar from "../../components/admin/NavBar"; */
 
 //reactstzrap
-import { Container, Row, Col, Card, Form, Button } from "reactstrap";
+import { Container, Row, Col} from "reactstrap";
 import CategoryAddPage from "./pages/CategoryAddPage";
 
 function AdminView() {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
 
   return (
     <>

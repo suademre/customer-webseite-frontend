@@ -46,7 +46,7 @@ function MultiCurrencyField(props) {
         <Nav
           tabs
           id="controlled-tab-example"
-          activeKey={active}
+          activekey={active}
           onSelect={(k) => setActive(k)}
         >
           {currencies.map((currency) => (
