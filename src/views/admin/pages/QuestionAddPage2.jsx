@@ -134,12 +134,13 @@ function QuestionAddPage2() {
           <i className="fa fa-plus"></i>
         </Button>
         <div style={{ width: "100%", overflow: "auto" }}>
-          {addQuestions.answers.map((answer, index) => {
+          {addQuestions.answers.map((answer, index,key) => {
             return (
               <Card
                 className="mt-4"
                 style={{ width: "20rem", float: "left", margin: "10px" }}
                 sm={4}
+                key={key}
               >
                 <CardBody>
                   <CardTitle>Answer </CardTitle>

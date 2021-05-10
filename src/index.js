@@ -37,7 +37,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import setupAxios from "../src/redux/setupAxios";
 import { Provider } from "react-redux";
-import MyRequests from "views/user/MyRequests";
+import MyRequests from "views/admin/pages/user/MyRequests";
 import Application from "views/admin/pages/userchoice/Application";
 import Webdevelopment from "views/admin/pages/userchoice/Webdevelopment";
 import Dataanalyst from "views/admin/pages/userchoice/Dataanalyst";

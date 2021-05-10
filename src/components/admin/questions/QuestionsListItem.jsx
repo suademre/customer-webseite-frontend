@@ -33,14 +33,14 @@ function QuestionsListItem() {
 
   return (
     <div>
-      {questions.map((question, index) => (
-        <Card className="bg-white text-white mt-5 mb-2 pl-3" sm="2">
+      {questions.map((question, index, key) => (
+        <Card className="bg-white text-white mt-5 mb-2 pl-3" sm="2" key={key}>
           <CardTitle tag="h4"> Question: {question.question}</CardTitle>
           <CardText>Category: {question.category_id.title}</CardText>
           <CardText>Es gibt {question.answers.length} antworten</CardText>
           <CardText>
-            {question.answers.map((q) => (
-              <CardText>
+            {question.answers.map((q,key) => (
+              <CardText key={key}>
                 answer:{q.text}, days:{q.days} cost: {q.cost}
               </CardText>
             ))}
