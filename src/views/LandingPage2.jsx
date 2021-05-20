@@ -19,7 +19,7 @@ import {
 import LandingPageHeader2 from "components/Headers/LandingPageHeader2.js";
 import FooterWhite from "components/Footers/FooterWhite.js";
 import WhiteNavbar2 from "components/Navbars/WhiteNavbar2";
-import { useRouteMatch, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 function LandingPage() {
   /* let { path, url } = useRouteMatch(); */

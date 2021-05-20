@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Link,
-  useRouteMatch,
   withRouter,
 } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
@@ -16,7 +15,6 @@ import {
   Nav,
   Container,
   UncontrolledTooltip,
-  NavLink,
   FormGroup,
   Input,
   Modal,
@@ -28,8 +26,6 @@ import { logout } from "redux/auth/authSlice";
 // core components
 
 function WhiteNavbar(props) {
-
-  let {url} = useRouteMatch();
 
   const [loginModal, setLoginModal] = React.useState(false);
   const [bodyClick, setBodyClick] = React.useState(false);
