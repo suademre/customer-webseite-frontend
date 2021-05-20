@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Link,
+  useRouteMatch,
   withRouter,
 } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
@@ -27,6 +28,8 @@ import { logout } from "redux/auth/authSlice";
 // core components
 
 function WhiteNavbar(props) {
+
+  let {url} = useRouteMatch();
 
   const [loginModal, setLoginModal] = React.useState(false);
   const [bodyClick, setBodyClick] = React.useState(false);
@@ -96,32 +99,60 @@ function WhiteNavbar(props) {
           </div>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="d-flex w-100" navbar>
-              <NavItem className="active px-2">
-                <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Home <span className="sr-only">(current)</span>
-                </NavLink>
+            <NavItem className="active px-2 m-auto">
+                <Button
+                  className="btn m-auto"
+                  color="info"
+                  target="_blank"
+                  onClick={() => {
+                    history.push("/");
+                    }}
+                >
+                  <i className="" /> Home
+                </Button>
               </NavItem>
-              <NavItem className=" px-2">
-                <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Features
-                </NavLink>
+              <NavItem className="active px-2 m-auto">
+                <Button
+                  className="btn m-auto"
+                  color="info"
+                  target="_blank"
+                  onClick={() => {
+                    history.push("/application");
+                    }}
+                >
+                  <i className="" /> App Development
+                </Button>
               </NavItem>
-              <NavItem className=" px-2">
+              <NavItem className="active px-2 m-auto">
+                <Button
+                  className="btn m-auto"
+                  color="info"
+                  target="_blank"
+                  onClick={() => {
+                    history.push("/webdevelopment");
+                    }}
+                >
+                  <i className="" /> Web Development
+                </Button>
+              </NavItem>
+              <NavItem className="active px-2 m-auto">
+                <Button
+                  className="btn m-auto"
+                  color="info"
+                  target="_blank"
+                  onClick={() => {
+                    history.push("/dataanalyst");
+                    }}
+                >
+                  <i className="" /> Data Analyst
+                </Button>
+              </NavItem>
+              {/* <NavItem className=" px-2">
                 <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
                   Pricing
                 </NavLink>
-              </NavItem>
-              <NavItem className=" px-2">
-                <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Pricing
-                </NavLink>
-              </NavItem>
-              <NavItem className=" px-2">
-                <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Pricing
-                </NavLink>
-              </NavItem>
-              <NavItem className=" ml-lg-auto">
+              </NavItem> */}
+              <NavItem className=" ml-lg-auto m-auto">
                 {userName ? (
                   <>
                     {userName}
