@@ -30,6 +30,7 @@ function PasswordForm(props) {
           isInvalid={
             data.passwordRepeat && data.password !== data.passwordRepeat
           }
+          
         />
       </FormGroup>
     </>

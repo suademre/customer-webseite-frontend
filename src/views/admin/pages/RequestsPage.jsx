@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 // reactstrap components
-import { Button, Table, UncontrolledTooltip } from "reactstrap";
+import { Button, Table, UncontrolledTooltip, Modal } from "reactstrap";
 
 function RequestsPage() {
   const [requests, setRequests] = useState([]);
   const [shouldUpdate, setShouldUpdate] = useState(true);
+  const [details,setDetails] = useState(false);
+  const [currentRequest, setCurrentRequest] = useState([]);
+  
 
   const updateStatus = (id, operation) => {
     axios(`http://localhost:3100/admin/requests/update/${id}/${operation}`);
@@ -17,11 +20,13 @@ function RequestsPage() {
     setShouldUpdate(false);
     axios("http://localhost:3100/admin/requests")
       .then((res) => {
-        console.log(res.data);
         setRequests(res.data);
+        /* console.log("requests"+requests); */
       })
       .catch((err) => console.log(err));
   }, [shouldUpdate]);
+
+  
 
   return (
     <>
@@ -38,9 +43,9 @@ function RequestsPage() {
           </tr>
         </thead>
 
+        <tbody>
         {requests.map((request) => (
-          <tbody>
-            <tr>
+            <tr key={request._id}>
               <td className="text-center">1</td>
               <td>{request.user ? request.user.contact.name : null}</td>
               <td>{request.status}</td>
@@ -92,15 +97,72 @@ function RequestsPage() {
                 >
                   <i className="fa fa-times"></i>
                 </Button>
+                
                 <UncontrolledTooltip
                   delay={0}
                   target="tooltip561480244"
                 ></UncontrolledTooltip>
+                <Button className="btn btn-warning btn-sm" type="button" 
+                onClick={(e)=>{
+                  setCurrentRequest(request)
+                  setDetails(true)}}>
+                  Details
+                </Button>
+
+               
+               
+                
               </td>
             </tr>
-          </tbody>
         ))}
+        </tbody>
       </Table>
+      <Modal
+       isOpen={details}
+       toggle={() => setDetails(false)}
+       modalClassName="modal-register"
+       >
+       
+       <div className="modal-header no-border-header text-center">
+         <button
+           aria-label="Close"
+           className="close"
+           data-dismiss="modal"
+           type="button"
+           onClick={() => setDetails(false)}
+         >
+           <span aria-hidden={true}>×</span>
+         </button>
+         {
+           details && currentRequest.questions.map(question=>(
+            <div className="card card-nav-tabs">
+            <div className="card-header card-header-warning">
+              {question.question}
+            </div>
+            {question.answers.map((answer)=>(
+              <div className="card-body">
+                <p className="card-title">{answer.isSelected === true ? answer.text : null}</p>
+              </div>
+            ))}
+          </div>
+           ))
+          //  currentRequest.questions.map((m)=>console.log(m))
+         }
+        {/*  {requests.find(request=>request._id === selectedRequestId).questions.map((question)=>(   
+           <div className="card card-nav-tabs">
+             <div className="card-header card-header-warning">
+               {question.question}
+             </div>
+             {question.answers.map((answer)=>(
+               <div className="card-body">
+                 <p className="card-title">{answer.isSelected === true ? answer.text : null}</p>
+               </div>
+             ))}
+           </div>
+       
+       ))} */}
+       </div>
+     </Modal>           
     </>
   );
 }

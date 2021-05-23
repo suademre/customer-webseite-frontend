@@ -13,7 +13,7 @@ import AdminView from "./views/admin/AdminView";
 import LoadingPageView from "./views/LoadingPageView";
 
 function App() {
-  const { t, i18n } = useTranslation();
+  /* const { t, i18n } = useTranslation(); */
   return (
     <Router>
       <Switch>
